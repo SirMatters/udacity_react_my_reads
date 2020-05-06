@@ -10,10 +10,11 @@ const BookCase = (props) => {
 
   return (
     <div>
-      MyReads
+      <h1>MyReads</h1>
       {shelves.map((s) => (
         <BookShelf {...s} {...props} key={s.shelfCriterion} />
       ))}
+      LINK_TO_SEARCH
     </div>
   );
 };
