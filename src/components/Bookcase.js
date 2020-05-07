@@ -1,5 +1,6 @@
 import React from 'react';
 import BookShelf from './BookShelf';
+import { Link } from 'react-router-dom';
 
 const BookCase = (props) => {
   const shelves = [
@@ -14,7 +15,7 @@ const BookCase = (props) => {
       {shelves.map((s) => (
         <BookShelf {...s} {...props} key={s.shelfCriterion} />
       ))}
-      LINK_TO_SEARCH
+      <Link to='/search'>Search Books</Link>
     </div>
   );
 };

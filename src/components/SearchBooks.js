@@ -45,7 +45,6 @@ class SearchBooks extends React.Component {
               onShelfChange={this.props.onShelfChange}
             />
           ))}
-          {JSON.stringify(this.state.displayBooks)}
         </div>
       </div>
     );
