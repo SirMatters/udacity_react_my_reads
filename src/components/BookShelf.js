@@ -7,15 +7,17 @@ const BookShelf = (props) => {
     return b.shelf === shelfCriterion;
   });
   return (
-    <div>
-      <h2>{shelfTitle}</h2>
-      <ul>
-        {shelfBooks.map((b) => (
-          <li key={b.id}>
-            <Book book={b} onShelfChange={props.onShelfChange} />
-          </li>
-        ))}
-      </ul>
+    <div className='bookshelf'>
+      <h2 className='bookshelf-title'>{shelfTitle}</h2>
+      <div className='bookshelf-books'>
+        <ol className='books-grid'>
+          {shelfBooks.map((b) => (
+            <li key={b.id}>
+              <Book book={b} onShelfChange={props.onShelfChange} />
+            </li>
+          ))}
+        </ol>
+      </div>
     </div>
   );
 };
