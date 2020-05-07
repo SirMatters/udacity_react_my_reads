@@ -1,25 +1,55 @@
 import React from 'react';
 import Book from './Book';
+import * as BooksAPI from '../BooksAPI';
 
-const SearchBooks = (props) => {
-  const onChange = (e) => {
-    props.onSearch(e.target.value);
+class SearchBooks extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      displayBooks: [],
+    };
+  }
+
+  syncWithState = (arr) => {
+    this.props.userShelf.forEach((userBook) => {
+      let foundBook = arr.find((queryBook) => userBook.id === queryBook.id);
+      if (foundBook) {
+        foundBook.shelf = userBook.shelf;
+      }
+    });
+    return arr;
   };
 
-  const displayBooks = [];
+  onChange = (e) => {
+    const val = e.target.value.trim();
 
-  return (
-    <div>
-      <form>
-        <input type='text' onChange={onChange} />
-      </form>
+    BooksAPI.search(val).then((res) => {
+      if (res && !res.hasOwnProperty('error')) {
+        let syncedRes = this.syncWithState(res);
+        this.setState({ displayBooks: syncedRes });
+      } else {
+        this.setState({ displayBooks: [] });
+        console.log('no books match your query');
+      }
+    });
+  };
+  render() {
+    return (
       <div>
-        {displayBooks.map((b) => (
-          <Book book={b} />
-        ))}
+        <input type='text' onChange={this.onChange} />
+        <div>
+          {this.state.displayBooks.map((b) => (
+            <Book
+              book={b}
+              key={b.id}
+              onShelfChange={this.props.onShelfChange}
+            />
+          ))}
+          {JSON.stringify(this.state.displayBooks)}
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  }
+}
 
 export default SearchBooks;
