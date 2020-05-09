@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Book = (props) => {
-  const { title, authors, imageLinks, shelf } = props.book;
+  const { title, authors = [], imageLinks = '', shelf } = props.book;
 
   const onShelfChange = (e) => {
     e.preventDefault();
