@@ -18,7 +18,7 @@ Tracked books have 3 states:
 - want to read
 - currently reading
 
-The book returning from searching will have tracked state provided it is tracked.
+Once the book tracked, it will have the same state in the represented search query.
 
 ## App start up
 To install all dependencies needed within root dir run 
