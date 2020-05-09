@@ -17,7 +17,18 @@ class App extends React.Component {
   handleShelfChange = (book, newShelf) => {
     book.shelf = newShelf;
     this.setState((currState) => ({ ...currState.books, book }));
-    BooksAPI.update(book, newShelf).then(() => {});
+    BooksAPI.update(book, newShelf)
+      .then(() => {})
+      .catch((err) =>
+        this.setState((currState) => {
+          alert(
+            `Sorry, the server is currently unavailabe. We can not change the shelf of ${
+              book.name
+            }. Please, try again later.`
+          );
+          return currState.books.filter((b) => b.id !== book.id);
+        })
+      );
   };
 
   render() {
