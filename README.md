@@ -1,12 +1,37 @@
-## Backend Server
+# My reads app (Udacity react nanodegree proj 1)
 
-To simplify your development process, we've provided a backend server for you to develop against. The provided file [`BooksAPI.js`](src/BooksAPI.js) contains the methods you will need to perform necessary operations on the backend:
+- [My reads app (Udacity react nanodegree proj 1)](#my-reads-app-udacity-react-nanodegree-proj-1)
+  - [About](#about)
+  - [App start up](#app-start-up)
+  - [API description](#api-description)
+    - [`getAll`](#getall)
+    - [`update`](#update)
+    - [`search`](#search)
+  - [Important](#important)
 
-- [Backend Server](#backend-server)
-  - [`getAll`](#getall)
-  - [`update`](#update)
-  - [`search`](#search)
-- [Important](#important)
+
+## About 
+This is a book reading tracking app with 3rd party API providing books data. User has its own bookcase which contains all 'tracked' books. New books are available through API.
+
+Tracked books have 3 states:
+- read
+- want to read
+- currently reading
+
+The book returning from searching will have tracked state provided it is tracked.
+
+## App start up
+To install all dependencies needed within root dir run 
+```bash
+npm install
+```
+
+after that you can start the app with 
+```bash
+npm start
+```
+
+## API description
 
 ### `getAll`
 
